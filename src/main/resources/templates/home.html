@@ -1,0 +1,55 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>corona virus Tracker</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+	crossorigin="anonymous">
+</head>
+
+<body>
+
+<div class="container">
+	<h1>CoronaVirus Tracker Application</h1>
+	<h3>This application lists the current number of cases reported
+		across the global</h3>
+
+	
+
+	<div class="jumbotron">
+		<h1 class="display-4" th:text="${totalreportedcases}"></h1>
+		<p class="lead">Total cases reported as of today</p>
+		<hr class="my-4">
+		  <p>
+		  <span>New Cases Reported since previous day</span>
+		 <span th:text="${totalNEWlycases}"></span>
+		  </p>
+		
+	</div>
+	
+
+		<table class="table">
+			<tr>
+				<th>State</th>
+				<th>Country</th>
+				<th>Total Case Reported</th>
+				<th>Changes Since Last Day</th>
+			</tr>
+			<tr th:each="locationstats: ${Models_locationStats}">
+				<td th:text="${locationstats.state}"></td>
+				<td th:text="${locationstats.country}"></td>
+				<td th:text="${locationstats.latestTotalcases}">0</td>
+				<td th:text="${locationstats.diffFromPrevDay}">0</td>
+				 
+			</tr>
+		</table>
+	</div>
+	
+</body>
+
+</html>
